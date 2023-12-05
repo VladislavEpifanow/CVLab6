@@ -38,11 +38,26 @@
  EPE = ||V_{gt} - V_{calc}||_2 = \sqrt{(\Delta x_{gt} - \Delta x_{calc})^2 + (\Delta y_{gt} - \Delta y_{calc})^2}
 ```
 Реализация расчета метрики на python с использованием pytorch представлена в файле [utils.py](./utils.py) в функции _mean_epe_
-## Baseline
+## Полученные результаты
 
-Модель FlowNet S, оптимизатор Adam, loss - EPE (совпадает с метрикой), batch_size = 8, количество эпох 20.
+Пример работы на изображении:
+* Первое исходное изображение:
+  
+![real_img1](https://github.com/VladislavEpifanow/CVLab6/blob/main/results/img1_test.png)
+
+* Второе исходное изображение:
+  
+![real_img2](https://github.com/VladislavEpifanow/CVLab6/blob/main/results/img2_test.png)
+* Реальный оптический поток:
+  
+![model_img](https://github.com/VladislavEpifanow/CVLab6/blob/main/results/real_flow.png)
+* Предсказанный оптический поток:
+  
+![model_img](https://github.com/VladislavEpifanow/CVLab6/blob/main/results/predicted_flow.png)
+
+Модель FlowNetS, оптимизатор Adam, loss - multiscaleEPE - на обучении, EPE - на тесте, batch_size = 16, количество эпох 150.
 
 Результаты:
-|     EPE (train-val set)     |     EPE (test set)     |     Time per image, sec    |
+|     EPE (val set)     |       EPE (test set)     |     Time per image, msec    |
 |-----------------------------|------------------------|----------------------------|
-|           8.04              |           7.0          |           0.0107           |
+|           6.3              |           4.9          |           18.4           |
